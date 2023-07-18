@@ -1,15 +1,10 @@
-import mongoose from "mongoose";
+import {model, Schema} from "mongoose";
 
-export type UserType = mongoose.Document & {
-    email: string,
-    name: string,
-    password: string,
-}
-
-const userSchema = new mongoose.Schema<UserType>({
+const userSchema = new Schema<IUser>({
     email: {
         type: String,
         required: true,
+        unique: true,
     },
     name: {
         type: String,
@@ -18,7 +13,12 @@ const userSchema = new mongoose.Schema<UserType>({
     password: {
         type: String,
         required: true,
+    },
+    isVerified: {
+        type: Boolean,
+        required: true,
+        default: false,
     }
 });
 
-export const User = mongoose.model<UserType>('User', userSchema);
+export const User = model<IUser>('User', userSchema);

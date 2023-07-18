@@ -6,7 +6,7 @@ const authController = require('../controllers/auth');
 const router = express.Router();
 
 router.post('/signup', [
-    check('email', 'Invalid email address').isEmail().custom((email: string, {req}) => {
+    check('email', 'Invalid email address').isEmail().custom( async (email: string, {req}) => {
        return User.findOne({email: email}).then(userDoc => {
             // check if email is already existing
             if(userDoc) {
@@ -22,6 +22,14 @@ router.post('/login', [
     check('email', 'Invalid email address').isEmail().bail(),
 ], authController.login)
 
-router.post('/login')
+router.post('/verify', check('email', 'Invalid email address').isEmail().custom(async (email: string, {req}) => {
+    const userDoc = await User.findOne({ email: email });
+    // check if email is already existing
+    if (userDoc) {
+        return Promise.reject('Email address already exists');
+    }
+ }).bail(),authController.verifyToken);
+
+ router.post('/resend/verification', authController.resendVerification);
 
 module.exports = router;
