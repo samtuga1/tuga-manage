@@ -1,6 +1,6 @@
 import { Request } from "express";
 import { ValidationError } from "express-validator"
-import mongoose from "mongoose"
+import mongoose, { ObjectId } from "mongoose"
 
 export {};
 
@@ -16,6 +16,7 @@ declare global {
 
     interface IOrganisation {
         name: string,
+        creatorId: mongoose.Types.ObjectId,
         projects: IProject[],
         members: IUser[],
     }

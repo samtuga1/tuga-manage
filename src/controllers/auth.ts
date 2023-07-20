@@ -7,7 +7,6 @@ import { validationResult } from "express-validator";
 import { Request, NextFunction, Response } from "express";
 import jwt from 'jsonwebtoken';
 import nodemailer from 'nodemailer';
-import crypto from 'crypto';
 const utils = require('../utils/utils');
 
 exports.signup = async (req: Request, res: Response, next: NextFunction) => {
@@ -52,7 +51,7 @@ exports.signup = async (req: Request, res: Response, next: NextFunction) => {
           // use our transporter to send the email to the user
         transporter.sendMail({
             from: 'TugaManager@gmail.com', 
-            to: email, 
+            to: process.env.NODE_MAILER_EMAIL, 
             subject: "Account Verification Link", 
             text: 'Hello '+ req.body.name +',\n\n' + 'Your verification code is ' + token.token + ' \n\nThank You!\n',
           }, (err) => {

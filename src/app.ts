@@ -24,8 +24,8 @@ app.use((error: ResponseError, req, res, next) => {
     })
 });
 
-app.use('/', (req, res, next) => {
-    res.json(404).json({
+app.use((req, res, next) => {
+    return res.status(404).json({
         message: 'Invalid endpoint',
     })
 })

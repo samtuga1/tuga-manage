@@ -5,10 +5,15 @@ const organisation_schema = new Schema<IOrganisation>({
         type: String,
         required: true,
     },
+    creatorId: {
+        type: Schema.ObjectId,
+        required: true,
+    },
     projects: [
         {
             type: Schema.Types.ObjectId,
             ref: 'Project',
+            default: []
         },
     ],
     members: [
