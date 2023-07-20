@@ -10,6 +10,6 @@ const tokenSchema = new Schema<IToken>({
         type: String,
         required: true,
     },
-});
+}, {versionKey: false,});
 
 export const Token = model<IToken>('Token', tokenSchema);
