@@ -19,6 +19,6 @@ const userSchema = new Schema<IUser>({
         required: true,
         default: false,
     }
-});
+}, {versionKey: false});
 
 export const User = model<IUser>('User', userSchema);
