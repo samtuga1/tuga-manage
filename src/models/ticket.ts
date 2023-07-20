@@ -38,6 +38,6 @@ const ticket = new Schema<ITicket>({
             ref: 'ticket_comment',
         }
     ]
-}, {timestamps: true} );
+}, {timestamps: true,versionKey: false} );
 
-module.exports = model<ITicket>('ticket', ticket);
+module.exports = model<ITicket>('Ticket', ticket);
