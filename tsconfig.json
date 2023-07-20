@@ -1,11 +1,13 @@
 {
     "compilerOptions": {
+      "allowSyntheticDefaultImports": true,
       "module": "commonjs",
       "esModuleInterop": true,
       "target": "es6",
       "moduleResolution": "node",
       "sourceMap": true,
+      "types": ["./src/types/global.d.ts"],
       "outDir": "dist"
     },
-    "lib": ["es2015"]
+    "lib": ["es2015"],
   }
