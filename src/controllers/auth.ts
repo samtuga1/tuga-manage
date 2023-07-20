@@ -217,3 +217,18 @@ exports.resendVerification = async (req: Request, res: Response, next: NextFunct
     }
     
 }
+
+exports.retrieve = async (req: CustomRequest, res: Response, next: NextFunction) => {
+    const userId = req.userId;
+    try{
+        const currentUser = await User.findById(userId).select('-password');
+        if(!currentUser) {
+            const error = new Error('No user found') as ResponseError;
+            error.statusCode = 404;
+            throw error;
+        }
+        res.status(200).json(currentUser);
+    } catch(err) {
+        next(err);
+    }
+}
