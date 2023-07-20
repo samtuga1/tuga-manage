@@ -1,3 +1,4 @@
+import { Request } from "express";
 import { ValidationError } from "express-validator"
 import mongoose from "mongoose"
 
@@ -16,6 +17,7 @@ declare global {
     interface IOrganisation {
         name: string,
         projects: IProject[],
+        members: IUser[],
     }
 
     interface IProject {
@@ -52,5 +54,10 @@ declare global {
     type ResponseError = Error & {
         data: ValidationError[],
         statusCode: number,
+    }
+
+    interface CustomRequest extends Request {
+        userId: string,
+        email: string,
     }
 }
