@@ -10,6 +10,6 @@ const ticket_comment = new Schema<ITicketComment>({
         type: String,
         required: true,
     }
-}, {timestamps: true});
+}, {timestamps: true, versionKey: false,});
 
-module.exports = model<ITicketComment>('ticket_comment', ticket_comment);
+module.exports = model<ITicketComment>('Ticket_comment', ticket_comment);
