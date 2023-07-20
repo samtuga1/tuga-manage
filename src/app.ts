@@ -7,10 +7,12 @@ const app = express();
 
 // FROM FILES/FOLDERS
 const authRoutes = require('./routes/auth');
+const organisation_routes = require('./routes/organisation');
 
 app.use(express.json())
 
-app.use('/auth', authRoutes);
+app.use('/account/user', authRoutes);
+app.use('/organisation', organisation_routes);
 
 app.use((error: ResponseError, req, res, next) => {
     const statusCode = error.statusCode || 500;
