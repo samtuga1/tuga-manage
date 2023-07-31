@@ -52,7 +52,7 @@ declare global {
     }
 
     // interface for response error
-    type ResponseError = Error & {
+    interface ResponseError extends Error {
         data: ValidationError[],
         statusCode: number,
     }
