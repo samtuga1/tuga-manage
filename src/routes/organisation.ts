@@ -1,18 +1,19 @@
 import { Router } from "express";
 
-import { check } from "express-validator";
-
-const organisationController = require('../controllers/organisation');
+const retrieveSingleOrganisationController = require('../controllers/organisation/retrieve_single');
+const createOrganisationController = require('../controllers/organisation/create');
+const inviteMembersController = require('../controllers/organisation/invite_members');
+const listOrganisationsController = require('../controllers/organisation/list_organisations');
 const isAuth = require('../middlewares/is_auth');
 
 const router = Router();
 
-router.get('/retrieve',isAuth, organisationController.retrieve);
+router.get('/retrieve',isAuth, listOrganisationsController);
 
-router.get('/retrieve/single/:id',isAuth, organisationController.retrieveSingle);
+router.get('/retrieve/:id',isAuth, retrieveSingleOrganisationController);
 
-router.post('/create',isAuth, organisationController.create);
+router.post('/create',isAuth, createOrganisationController);
 
-router.patch('/:id/invite/members', isAuth, organisationController.inviteMembers);
+router.patch('/:id/invite/members', isAuth, inviteMembersController);
 
 module.exports = router;
