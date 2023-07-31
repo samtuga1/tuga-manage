@@ -4,6 +4,7 @@ const retrieveSingleOrganisationController = require('../controllers/organisatio
 const createOrganisationController = require('../controllers/organisation/create');
 const inviteMembersController = require('../controllers/organisation/invite_members');
 const listOrganisationsController = require('../controllers/organisation/list_organisations');
+
 const isAuth = require('../middlewares/is_auth');
 
 const router = Router();

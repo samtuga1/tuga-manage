@@ -21,5 +21,3 @@ router.post('/verify', verifyEmailValidation,verifyTokenController);
  router.get('/retrieve', isAuth, retrieveUserController),
 
  router.post('/resend/verification', resendVerificationController);
-
-module.exports = router;
